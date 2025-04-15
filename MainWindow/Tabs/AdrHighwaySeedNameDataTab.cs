@@ -42,7 +42,6 @@ namespace Klyte.Addresses.UI
         private UITextField m_hwType;
         private UITextField m_hwId;
         private UITextField m_hwName;
-        private UICheckBox m_showDirectionName;
         private UITextField m_hwMileageOffset;
         private UICheckBox m_hwInvertMileage;
         private UIColorField m_hwColor;
