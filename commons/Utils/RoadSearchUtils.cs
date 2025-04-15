@@ -61,18 +61,21 @@ namespace Klyte.Commons.Utils
                             Vector3 position3 = instance.m_nodes.m_buffer[(int)endNode].m_position;
                             float num8 = Mathf.Max(Mathf.Max(bounds.min.x - 64f - position2.x, bounds.min.z - 64f - position2.z), Mathf.Max(position2.x - bounds.max.x - 64f, position2.z - bounds.max.z - 64f));
                             float num9 = Mathf.Max(Mathf.Max(bounds.min.x - 64f - position3.x, bounds.min.z - 64f - position3.z), Mathf.Max(position3.x - bounds.max.x - 64f, position3.z - bounds.max.z - 64f));
-                            if ((num8 < 0f || num9 < 0f) && instance.m_segments.m_buffer[(int)num6].m_bounds.Intersects(bounds) && instance.m_segments.m_buffer[(int)num6].GetClosestLanePosition(position, laneType, vehicleType, stopType, requireConnect, out Vector3 b, out int num10, out float num11, out Vector3 b2, out int num12, out float num13, 0))
+                            Vector3 posA, posB;
+                            int laneA, laneB;
+                            float offsetA, offsetB;
+                            if ((num8 < 0f || num9 < 0f) && instance.m_segments.m_buffer[(int)num6].m_bounds.Intersects(bounds) && instance.m_segments.m_buffer[(int)num6].GetClosestLanePosition(position, laneType, vehicleType, VehicleInfo.VehicleCategory.None, stopType, requireConnect, out posA, out laneA, out offsetA, out posB, out laneB, out offsetB))
                             {
-                                float num14 = Vector3.SqrMagnitude(position - b);
+                                float num14 = Vector3.SqrMagnitude(position - posA);
                                 if (num14 < num5)
                                 {
                                     num5 = num14;
                                     pathPosA.m_segment = num6;
-                                    pathPosA.m_lane = (byte)num10;
-                                    pathPosA.m_offset = (byte)Mathf.Clamp(Mathf.RoundToInt(num11 * 255f), 0, 255);
+                                    pathPosA.m_lane = (byte)laneA;
+                                    pathPosA.m_offset = (byte)Mathf.Clamp(Mathf.RoundToInt(offsetA * 255f), 0, 255);
                                     distanceSqrA = num14;
-                                    num14 = Vector3.SqrMagnitude(position - b2);
-                                    if (num12 == -1 || num14 >= maxDistance * maxDistance)
+                                    num14 = Vector3.SqrMagnitude(position - posB);
+                                    if (laneB == -1 || num14 >= maxDistance * maxDistance)
                                     {
                                         pathPosB.m_segment = 0;
                                         pathPosB.m_lane = 0;
@@ -82,8 +85,8 @@ namespace Klyte.Commons.Utils
                                     else
                                     {
                                         pathPosB.m_segment = num6;
-                                        pathPosB.m_lane = (byte)num12;
-                                        pathPosB.m_offset = (byte)Mathf.Clamp(Mathf.RoundToInt(num13 * 255f), 0, 255);
+                                        pathPosB.m_lane = (byte)laneB;
+                                        pathPosB.m_offset = (byte)Mathf.Clamp(Mathf.RoundToInt(offsetB * 255f), 0, 255);
                                         distanceSqrB = num14;
                                     }
                                 }
