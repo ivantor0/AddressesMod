@@ -69,6 +69,8 @@ namespace Klyte.Addresses
         public const string CITIZEN_FIRST_NAME_MASC_SUBFOLDER_NAME = "CitizenFirstNameMale";
         public const string CITIZEN_FIRST_NAME_FEM_SUBFOLDER_NAME = "CitizenFirstNameFemale";
         public const string CITIZEN_LAST_NAME_SUBFOLDER_NAME = "CitizenLastName";
+        public const string CITIZEN_LAST_NAME_MASC_SUBFOLDER_NAME = "CitizenLastNameMale";
+        public const string CITIZEN_LAST_NAME_FEM_SUBFOLDER_NAME = "CitizenLastNameFemale";
         public const string HIGHWAY_PREFABS_SUBFOLDER_NAME = "HighwayConfigurations";
         public const string FOOTBALL_TEAM_DATA = "FootballTeams";
 
@@ -80,6 +82,8 @@ namespace Klyte.Addresses
         public static string CitizenFirstNameMascPath { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + CITIZEN_FIRST_NAME_MASC_SUBFOLDER_NAME;
         public static string CitizenFirstNameFemPath { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + CITIZEN_FIRST_NAME_FEM_SUBFOLDER_NAME;
         public static string CitizenLastNamePath { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + CITIZEN_LAST_NAME_SUBFOLDER_NAME;
+        public static string CitizenLastNameMascPath { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + CITIZEN_LAST_NAME_MASC_SUBFOLDER_NAME;
+        public static string CitizenLastNameFemPath { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + CITIZEN_LAST_NAME_FEM_SUBFOLDER_NAME;
         public static string HighwayConfigurationFolder { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + HIGHWAY_PREFABS_SUBFOLDER_NAME;
         public static string FootballTeamDataFolder { get; } = FOLDER_NAME + Path.DirectorySeparatorChar + FOOTBALL_TEAM_DATA;
 

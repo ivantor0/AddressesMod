@@ -18,6 +18,8 @@ namespace Klyte.Addresses.UI
         private UIDropDown m_maleFiles;
         private UIDropDown m_femaleFiles;
         private UIDropDown m_lastNameFiles;
+        private UIDropDown m_maleLastNameFiles;
+        private UIDropDown m_femaleLastNameFiles;
 
         private UIHelperExtension m_uiHelperDistrict;
 
@@ -39,6 +41,8 @@ namespace Klyte.Addresses.UI
             CreateGroupFileSelect("K45_ADR_CITIZEN_MALE_FIRST_NAME_FILE", OnChangeSelectedCitizenFirstNameMasc, ReloadMaleNameFiles, out m_maleFiles);
             CreateGroupFileSelect("K45_ADR_CITIZEN_FEMALE_FIRST_NAME_FILE", OnChangeSelectedCitizenFirstNameFem, ReloadFemaleNameFiles, out m_femaleFiles);
             CreateGroupFileSelect("K45_ADR_CITIZEN_LAST_NAME_FILE", OnChangeSelectedCitizenLastName, ReloadLastNameFiles, out m_lastNameFiles);
+            CreateGroupFileSelect("K45_ADR_CITIZEN_MALE_LAST_NAME_FILE", OnChangeSelectedCitizenLastNameMale, ReloadMaleLastNameFiles, out m_maleLastNameFiles);
+            CreateGroupFileSelect("K45_ADR_CITIZEN_FEMALE_LAST_NAME_FILE", OnChangeSelectedCitizenLastNameFemale, ReloadFemaleLastNameFiles, out m_femaleLastNameFiles);
         }
 
 
@@ -93,6 +97,21 @@ namespace Klyte.Addresses.UI
             Locale.Get("K45_ADR_DEFAULT_FILE_NAME")
             );
 
+        private void ReloadMaleLastNameFiles() => ReloadFiles(
+            AdrController.LoadLocalesCitizenLastNameMale,
+            AdrController.CurrentConfig.GlobalConfig.CitizenConfig.MaleSurnamesFile,
+            AdrController.LoadedLocalesCitizenLastNameMasc.Keys.ToList(),
+            m_maleLastNameFiles,
+            Locale.Get("K45_ADR_DEFAULT_FILE_NAME")
+            );
+
+        private void ReloadFemaleLastNameFiles() => ReloadFiles(
+            AdrController.LoadLocalesCitizenLastNameFemale,
+            AdrController.CurrentConfig.GlobalConfig.CitizenConfig.FemaleSurnamesFile,
+            AdrController.LoadedLocalesCitizenLastNameFem.Keys.ToList(),
+            m_femaleLastNameFiles,
+            Locale.Get("K45_ADR_DEFAULT_FILE_NAME")
+            );
 
         private void OnChangeSelectedCitizenFirstNameMasc(int idx)
         {
@@ -120,6 +139,24 @@ namespace Klyte.Addresses.UI
                 return;
             }
             AdrController.CurrentConfig.GlobalConfig.CitizenConfig.SurnamesFile = (idx > 0 ? m_lastNameFiles.selectedValue : null);
+        }
+
+        private void OnChangeSelectedCitizenLastNameMale(int idx)
+        {
+            if (isLoading)
+            {
+                return;
+            }
+            AdrController.CurrentConfig.GlobalConfig.CitizenConfig.MaleSurnamesFile = (idx > 0 ? m_maleLastNameFiles.selectedValue : null);
+        }
+
+        private void OnChangeSelectedCitizenLastNameFemale(int idx)
+        {
+            if (isLoading)
+            {
+                return;
+            }
+            AdrController.CurrentConfig.GlobalConfig.CitizenConfig.FemaleSurnamesFile = (idx > 0 ? m_femaleLastNameFiles.selectedValue : null);
         }
     }
 

@@ -50,12 +50,24 @@ namespace Klyte.Addresses.Overrides
                 }
 
             }
-            string filenameLast = AdrController.CurrentConfig?.GlobalConfig?.CitizenConfig?.SurnamesFile ?? "";
+            string filenameLast = isMale 
+                ? (AdrController.CurrentConfig?.GlobalConfig?.CitizenConfig?.MaleSurnamesFile ?? AdrController.CurrentConfig?.GlobalConfig?.CitizenConfig?.SurnamesFile ?? "")
+                : (AdrController.CurrentConfig?.GlobalConfig?.CitizenConfig?.FemaleSurnamesFile ?? AdrController.CurrentConfig?.GlobalConfig?.CitizenConfig?.SurnamesFile ?? "");
 
             if (AdrController.LoadedLocalesCitizenLastName.ContainsKey(filenameLast))
             {
                 int arrLen = AdrController.LoadedLocalesCitizenLastName[filenameLast].Length;
                 surname = AdrController.LoadedLocalesCitizenLastName[filenameLast][randomizer2.Int32((uint)arrLen)];
+            }
+            else if (isMale && AdrController.LoadedLocalesCitizenLastNameMasc.ContainsKey(filenameLast))
+            {
+                int arrLen = AdrController.LoadedLocalesCitizenLastNameMasc[filenameLast].Length;
+                surname = AdrController.LoadedLocalesCitizenLastNameMasc[filenameLast][randomizer2.Int32((uint)arrLen)];
+            }
+            else if (!isMale && AdrController.LoadedLocalesCitizenLastNameFem.ContainsKey(filenameLast))
+            {
+                int arrLen = AdrController.LoadedLocalesCitizenLastNameFem[filenameLast].Length;
+                surname = AdrController.LoadedLocalesCitizenLastNameFem[filenameLast][randomizer2.Int32((uint)arrLen)];
             }
             else
             {

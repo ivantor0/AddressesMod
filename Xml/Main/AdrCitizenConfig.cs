@@ -14,6 +14,11 @@ namespace Klyte.Addresses.Xml
         [XmlAttribute("surnamesFile")]
         public string SurnamesFile { get; set; }
 
+        [XmlAttribute("maleSurnamesFile")]
+        public string MaleSurnamesFile { get; set; }
+
+        [XmlAttribute("femaleSurnamesFile")]
+        public string FemaleSurnamesFile { get; set; }
     }
 }
 

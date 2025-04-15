@@ -11,11 +11,23 @@
     <WarningLevel>4</WarningLevel>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>default</LangVersion>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>
     </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -192,39 +204,39 @@
       <HintPath>..\..\packages\Lib.Harmony.1.2.0.1\lib\net35\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="ColossalManaged">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ColossalManaged.dll</HintPath>
     </Reference>
     <Reference Include="ICities">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICities.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Mono.Posix.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Mono.Posix.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Security">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Mono.Security.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.Networking.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>S:\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\Steam\steamapps\common\Cities_Skylines\Cities_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -333,17 +345,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>del /Q "C:\Users\Leandro\AppData\Local\Colossal Order\Cities_Skylines\Addons\Mods\ADR\*"
-del /Q "S:\Steam\steamapps\workshop\content\255710\1322787091\*"
-del /Q "$(ProjectDir)\_requiredDLLs"</PreBuildEvent>
+    <PreBuildEvent></PreBuildEvent>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <ProjectGuid>{3518655D-2922-4E78-8875-C38CE7B15ADF}</ProjectGuid>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>xcopy /Y "$(TargetDir)0Harmony.dll" "$(ProjectDir)\_requiredDLLs\"
-xcopy /Y "$(TargetPath)" "$(ProjectDir)\_requiredDLLs\"
-xcopy /Y "$(ProjectDir)\_requiredDLLs\*" "C:\Users\Leandro\AppData\Local\Colossal Order\Cities_Skylines\Addons\Mods\ADR\"
-xcopy /Y "$(ProjectDir)\_requiredDLLs\*"  "S:\Steam\steamapps\workshop\content\255710\1322787091\"</PostBuildEvent>
+xcopy /Y "$(TargetPath)" "$(ProjectDir)\_requiredDLLs\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

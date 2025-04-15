@@ -31,6 +31,8 @@ namespace Klyte.Addresses
         private static Dictionary<string, string[]> m_loadedLocalesCitizenFirstNameMasc;
         private static Dictionary<string, string[]> m_loadedLocalesCitizenFirstNameFem;
         private static Dictionary<string, string[]> m_loadedLocalesCitizenLastName;
+        private static Dictionary<string, string[]> m_loadedLocalesCitizenLastNameMasc;
+        private static Dictionary<string, string[]> m_loadedLocalesCitizenLastNameFem;
         private static Dictionary<string, FootballTeamData[]> m_loadedLocalesFootballTeams;
 
         internal static Dictionary<string, string[]> LoadedLocalesRoadName => m_loadedLocalesRoadName;
@@ -41,6 +43,8 @@ namespace Klyte.Addresses
         internal static Dictionary<string, string[]> LoadedLocalesCitizenFirstNameMasc => m_loadedLocalesCitizenFirstNameMasc;
         internal static Dictionary<string, string[]> LoadedLocalesCitizenFirstNameFem => m_loadedLocalesCitizenFirstNameFem;
         internal static Dictionary<string, string[]> LoadedLocalesCitizenLastName => m_loadedLocalesCitizenLastName;
+        internal static Dictionary<string, string[]> LoadedLocalesCitizenLastNameMasc => m_loadedLocalesCitizenLastNameMasc;
+        internal static Dictionary<string, string[]> LoadedLocalesCitizenLastNameFem => m_loadedLocalesCitizenLastNameFem;
         internal static Dictionary<string, FootballTeamData[]> LoadedLocalesFootballTeams => m_loadedLocalesFootballTeams;
 
         public static void LoadLocalesRoadPrefix()
@@ -62,6 +66,8 @@ namespace Klyte.Addresses
         public static void LoadLocalesCitizenFirstNameMale() => LoadSimpleNamesFiles(out m_loadedLocalesCitizenFirstNameMasc, AddressesMod.CitizenFirstNameMascPath);
         public static void LoadLocalesCitizenFirstNameFemale() => LoadSimpleNamesFiles(out m_loadedLocalesCitizenFirstNameFem, AddressesMod.CitizenFirstNameFemPath);
         public static void LoadLocalesCitizenLastName() => LoadSimpleNamesFiles(out m_loadedLocalesCitizenLastName, AddressesMod.CitizenLastNamePath);
+        public static void LoadLocalesCitizenLastNameMale() => LoadSimpleNamesFiles(out m_loadedLocalesCitizenLastNameMasc, AddressesMod.CitizenLastNameMascPath);
+        public static void LoadLocalesCitizenLastNameFemale() => LoadSimpleNamesFiles(out m_loadedLocalesCitizenLastNameFem, AddressesMod.CitizenLastNameFemPath);
         public static void LoadLocalesFootbalTeams() => LoadFootballNamesFiles(out m_loadedLocalesFootballTeams, AddressesMod.FootballTeamDataFolder);
 
         private static void LoadSimpleNamesFiles(out Dictionary<string, string[]> result, string path)
@@ -112,6 +118,8 @@ namespace Klyte.Addresses
             LoadLocalesCitizenFirstNameMale();
             LoadLocalesCitizenFirstNameFemale();
             LoadLocalesCitizenLastName();
+            LoadLocalesCitizenLastNameMale();
+            LoadLocalesCitizenLastNameFemale();
             LoadLocalesFootbalTeams();
         }
 
